@@ -1,0 +1,22 @@
+#main yaml file
+
+spring:
+  application:
+    name: auth-app_backend
+  profiles:
+      active: dev
+
+server:
+  port: 8082
+
+#configurations
+#database configurations
+
+
+#mysql configurations
+
+
+#email configurations
+
+
+#oauth2 configurations
