@@ -6,9 +6,15 @@ server:
 #database connections
 spring:
   datasource:
-    url: jdbc:mysql://local:3306/auth_app_yt
+    url: jdbc:mysql://localhost:3306/auth_app_yt
     username: root
-    password: root1234
+    password: password
+
+#  spring.datasource.url=jdbc:postgresql://localhost:5432/your_db
+#  spring.datasource.username=your_user
+#  spring.datasource.password=your_password
+#
+#  spring.jpa.database-platform=org.hibernate.dialect.PostgreSQLDialect
 
 #    hikari:
 #      pool_name: HikariCP
@@ -26,7 +32,7 @@ jpa:
     ddl-auto: update    #automatically table will ge updated when entities are there
   properties:
     hibernate:
-      dialect: org.hibernate.dialect.PostgreSQLDialect
+      dialect: org.hibernate.dialect.MySQLDialect
       format_sql: true
   show-sql: true
 

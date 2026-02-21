@@ -23,8 +23,9 @@ public class User {
     @GeneratedValue(strategy = GenerationType.AUTO)
     @Column(name = "user_id")
     private UUID id;
-    private String email;
     @Column(name = "user_email", unique = true, length = 300)
+    private String email;
+    @Column(name = "user_name", unique = true, length = 500)
     private String name;
     private String password;
     private String image;
@@ -35,10 +36,23 @@ public class User {
 //    private String gender;
 //    private Address address;
 
-    private Provider provider;
-    @ManyToMany(fetch = FetchType.EAGER)
+    private Provider provider = Provider.LOCAL;
+    @ManyToMany(fetch = FetchType.EAGER)                    //In a Many-to-Many relationship, JPA needs a third table (called a join table) to connect both tables.
     @JoinTable(name = "user_roles",
-                joinColumns = @JoinColumn(name = "user_id"), inverseJoinColumns = @JoinColumn(name = "role"))       //lest suppose User 1 ko 3 role diya ho, user 3 ko 5 role diya ho
+                joinColumns = @JoinColumn(name = "user_id"), inverseJoinColumns = @JoinColumn(name = "role_id"))       //lest suppose User 1 ko 3 role diya ho, user 3 ko 5 role diya ho
 
     private Set<Role> roles = new HashSet<>();
+
+//    @PrePersist is a JPA lifecycle callback annotation. This method runs automatically before the entity is saved (INSERTED) into the database.So when you do: userRepository.save(user);
+    @PrePersist
+    protected void onCreate(){
+        Instant now = Instant.now();
+        if(createdAt == null) createdAt = now;
+        updatedAt = now;
+    }
+
+    @PreUpdate
+    protected void onUpdate(){
+        updatedAt = Instant.now();
+    }
 }
