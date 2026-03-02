@@ -36,3 +36,19 @@ jpa:
       format_sql: true
   show-sql: true
 
+
+logging:
+  level:
+    org.springframework.security: DEBUG
+
+
+security:
+    jwt:
+      secret: ${JWT SECRET:wswjdoickaslklqsowqjhdijdlqwsqwdhkqjdlkqdlskdlskxdwjcidj}  //you can also create using environment variable
+      issuer: ${JWT_ISSUER:api.substring.com}
+      access-ttl-seconds: ${JWT_ACCESS_TTL_SECONDS:3600}      //60 minutes
+      refresh-ttl-seconds: ${JWT_REFRESH_TTL_SECONDS:86400}     //24 hours
+      refresh-token-cookie-name: ${JWT_REFRESH_COOKIE_NAME:refreshToken}
+      cookie-secure: ${JWT_COOKIE_SECURE:true}
+      cookie-http-only: ${JWT_COOKIE_HTTP_ONLY:true}
+      cookie-same-site: ${JWT_COOKIE_SAME_SITE:lax}       // Lax:Cookie sent for same-site + some safe cross-site requests

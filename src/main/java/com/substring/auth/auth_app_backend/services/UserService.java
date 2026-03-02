@@ -16,7 +16,9 @@ public interface UserService {
 
     UserDto getUserById(String userId);
 
-    Iterable<UserDto> getAllUsers();
+    Iterable<UserDto> getAllUsers();        //Iterable<T> is a Java interface that represents a collection of objects that can be iterated (looped).
+                                        //Enhanced for-loop (for-each) . for (UserDto user : getAllUsers()) {
+    //                                          System.out.println(user);}
 
 
 }

@@ -1,4 +1,4 @@
-package com.substring.auth.auth_app_backend.services;
+package com.substring.auth.auth_app_backend.services.impl;
 
 import com.substring.auth.auth_app_backend.dtos.UserDto;
 import com.substring.auth.auth_app_backend.exceptions.ResourceNotFoundException;
@@ -6,15 +6,15 @@ import com.substring.auth.auth_app_backend.helper.UserHelper;
 import com.substring.auth.auth_app_backend.models.Provider;
 import com.substring.auth.auth_app_backend.models.User;
 import com.substring.auth.auth_app_backend.repositories.UserRepository;
+import com.substring.auth.auth_app_backend.services.UserService;
 import jakarta.transaction.Transactional;
 import org.modelmapper.ModelMapper;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.UUID;
 
 @Service
-public class UserServiceImpl implements UserService{
+public class UserServiceImpl implements UserService {
 
     private final UserRepository userRepository;
     private final ModelMapper modelMapper;
